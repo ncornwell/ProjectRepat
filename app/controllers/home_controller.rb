@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @products = Products.all
+    @products = Products.all.take(9)
     
 
     respond_to do |format|
@@ -11,7 +11,8 @@ class HomeController < ApplicationController
   end
 
   def about
-
   end
 
+  def history
+  end
 end

@@ -3,6 +3,7 @@ ProjectRepat::Application.routes.draw do
   resources :home
 
   match 'about' => 'home#about'
+  match 'history' => 'home#history'
 
   # get "home/index"
 

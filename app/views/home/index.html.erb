@@ -1,18 +1,16 @@
 
 
-<div class="container">
-<div class="span-24 last">
-  <h1>Project Repatriation</h1>
-</div>
 <% colcount = 1 %>
 <% @products.each do |product| %>  
   <div class="span-8 <%= colcount % 3 == 0 ? 'last' : '' %> ">
-    <%= product.name %>
-    <%= product.title %>
-    <%= product.content %>
-    <img alt="test" height="100" src="/images/products/<%= ProductImages.find(product.id).imagename%> " />
+     <a href="">
+      <div class="span-8 last">
+        <%= product.title %>
+      </div>
+      <div class="span-8 last">
+        <img alt="test" height="100" src="/images/products/<%= ProductImages.find(product.id).imagename%> " />
+      </div>
+    </a>
   </div>
   <%  colcount = colcount + 1%>
 <% end %>
-
-  </div>
