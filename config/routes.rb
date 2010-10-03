@@ -1,4 +1,14 @@
 ProjectRepat::Application.routes.draw do
+  resources :posts
+  resources :home
+
+  match 'about' => 'home#about'
+
+  # get "home/index"
+
+  root :to => "home#index"
+  #root :to => "home#about"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
