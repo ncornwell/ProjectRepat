@@ -1,18 +1,11 @@
 class HomeController < ApplicationController
-  def index
-    @products = Products.all.take(9)
-    
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @products }
-    end
-
-  end
+  respond_to :xml, :html, :json
 
   def about
   end
 
   def history
   end
+
 end
