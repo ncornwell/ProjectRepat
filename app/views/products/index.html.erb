@@ -1,0 +1,4 @@
+
+<% @products.each do |product| %>  
+  <%= render :partial => 'product', :locals => { :product => product}%>
+<% end %>
