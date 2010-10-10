@@ -2,36 +2,67 @@
 <html>
 <head>
   <title>ProjectRepat</title>
-
+<!--
   <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection"/>
-  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print"/>
+  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print"/>-->
   <!--[if lt IE 8]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
 
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssgrids/grids.css" />
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css" />
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssbase/base-min.css" />
+
+
+  <!--<%= stylesheet_link_tag :all %>-->
+  <%=  javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+
+  <style>
+/* everything below is custom styling to demonstrate how to create a page layout using yui grid units */
+
+    body {
+        margin: auto; /* center in viewport */
+        width: 960px;
+    }
+
+</style>
+  
 </head>
 <body>
-  <div class="container">
-    <div class="span-24 last">
-      <h1>Project Repatriation</h1>
-    </div>
-    <div class="span-24 last">
-      <div class="span-2">
-        <%= link_to 'Home', root_path %> |
-      </div>
-      <div class="span-2">
-        <%= link_to 'About', about_path %> |
-      </div>
-      <div class="span-2 last">
-        <%= link_to 'History', history_path %> |
+  <div class="yui3-g">
+    <div class="yui3-u-1-6">
+      <div class="content">
+
       </div>
     </div>
-    <div class="span-24 last">
-      <br />
+    <div class="yui3-u-2-3">
+      <div class="yui3-u-1">
+        <div class="content">
+          <h1>Project Repatriation</h1>
+        </div>
+      </div>
+      <div class="yui3-u-1">
+        <div class="content">
+          <%= link_to 'Home', root_path %> |
+          <%= link_to 'About', about_path %> |
+          <%= link_to 'History', history_path %> |
+          <% if user_signed_in? %>
+            <%= link_to 'Admin' %> |
+            Signed in as <%= current_user.email %>
+            <%= link_to "Sign out", destroy_user_session_path %>
+          <% end  %>
+          <br />
+        </div>
     </div>
-    
-    <%= yield %>
+    <div class="yui3-g">
+      <%= yield %>
+    </div>
+    </div>
+    <div class="yui3-u-1-6">
+      <div class="content">
+
+      </div>
+    </div>
   </div>
 </body>
 </html>
