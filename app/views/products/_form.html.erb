@@ -38,11 +38,6 @@
     <%= f.label :image %><br />
     <%= f.file_field  :image %>
   </div>
-  <% @product.product_images.each do |image| %>
-    <div class="field">
-      <img alt="test" height="100" src="/images/products/<%= image.imagename %> " />
-    </div>
-  <% end  %>
   <div class="actions">
     <%= f.submit %>
   </div>

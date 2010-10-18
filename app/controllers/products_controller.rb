@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :only_admin, :except => [:show, :index]
 
   respond_to :html, :xml, :json
 
@@ -44,27 +44,8 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
 
-    @product.name = params[:product][:name]
-    @product.title = params[:product][:title]
-    @product.content = params[:product][:content]
-    @product.price = params[:product][:price]
-    @product.sex = params[:product][:sex]
-    @product.location = params[:product][:location]
-    @product.category = params[:product][:category]
-
-
     respond_to do |format|
-      #if @product.update_attributes(params[:product])
-      if @product.save
-        if params[:product][:image]          
-          pimage = ProductImage.create({:imagename => params[:product][:image].original_filename})
-          pimage.product = @product
-          pimage.save
-
-          DataFile.save params[:product][:image], "#{pimage.id}.jpg"
-
-        end
-
+      if @product.update_attributes(params[:product])
         format.html { redirect_to(@product, :notice => 'Product was successfully updated.') }
         format.xml  { head :ok }
       else

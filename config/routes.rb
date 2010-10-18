@@ -10,6 +10,10 @@ ProjectRepat::Application.routes.draw do
   match '/about' => 'home#about', :as => :about
   match '/history' => 'home#history', :as => :history
 
+  match "/payments" => 'payments#index'
+
+  match "/paypal" => "admin#paypal"
+
   # Map to login
   # match '/admin/sign_in' => 'users/sign_in'
 
@@ -17,5 +21,9 @@ ProjectRepat::Application.routes.draw do
   root :to => 'products#index'
   
 
+  # Install the default routes as the lowest priority.
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
+  match '/:controller(/:action(/:id))'
   
 end

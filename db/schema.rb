@@ -10,14 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101007044402) do
+ActiveRecord::Schema.define(:version => 20101017032816) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
   end
 
+  create_table "data_files", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "paypals", :force => true do |t|
+    t.string   "login"
+    t.string   "password"
+    t.string   "signature"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "product_images", :force => true do |t|
@@ -35,6 +48,10 @@ ActiveRecord::Schema.define(:version => 20101007044402) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -51,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20101007044402) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
