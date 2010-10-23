@@ -1,5 +1,29 @@
+
+
 <div class="yui3-g">
-  <% @products.each do |product| %>
-    <%= render :partial => 'product', :locals => { :product => product}%>
-  <% end %>
+  <div class="yui3-u-2-3">
+    <div class="yui3-g">
+      <% @products.each do |product| %>
+        <%= render :partial => 'product', :locals => { :product => product}%>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="yui3-u-1-3 repattag">
+    <div class="content ">
+      <br />
+      <br />
+      <div class="tagtext">
+        <h3>PROJECT REPATRIATION</h3>
+        <p>
+          Have your T-shirts suffered from premature deportation?
+        </p>
+        <p>
+          Project Repatriation tracks down and purchases your T-shirts in developing
+          world markets, provides a wash and a touch up, and sells the shirts domestically
+          to support organizations working in Africa.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
