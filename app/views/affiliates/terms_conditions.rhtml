@@ -1,0 +1,7 @@
+<div id="left">
+  <h2><%= @title %></h2>
+	<%= get_markdown Snippet.find_by_name('AffiliateTermsAndConditions').content %>
+</div>
+
+<%= render :partial => 'sidebar' %>
+<div class="clear"></div>

@@ -1,0 +1,11 @@
+Rubyjedi's Substruct Fork for Rails3
+
+in vendor/plugins, you need to install the following:
+  substruct (The rubyjedi-substruct fork for Rails3, or a derivative)
+  prototype_legacy_helper
+  verification
+  dynamic_form
+
+If you're actively developing, chances are good you'll also need to install the following:
+  paperclip_fixtures
+

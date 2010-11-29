@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
+  ## Begin Substruct Includes ##
+  include SubstructApplicationController  
+  before_filter :set_substruct_view_defaults
+  before_filter :get_nav_tags
+  before_filter :find_customer
+  ## End Substruct Includes ##
+  
   protect_from_forgery
-
-  def only_admin
-    unless current_user && current_user.admin?
-      redirect_to new_session_path(:user), :notice => "You must be admin to access this page"
-    end
-  end
+  layout 'application'
 end

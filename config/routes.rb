@@ -1,29 +1,58 @@
-ProjectRepat::Application.routes.draw do    
+SubstructAppR3::Application.routes.draw do |map|
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
 
-  # Authentication
-  devise_for :users
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
 
-  # Wire up default routes index and show (the rest aren't used)
-  resources :products
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
 
-  # Map to static pages
-  match '/about' => 'home#about', :as => :about
-  match '/history' => 'home#history', :as => :history
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
-  match "/payments" => 'payments#index'
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get :short
+  #       post :toggle
+  #     end
+  #
+  #     collection do
+  #       get :sold
+  #     end
+  #   end
 
-  match "/paypal" => "admin#paypal"
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
 
-  # Map to login
-  # match '/admin/sign_in' => 'users/sign_in'
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get :recent, :on => :collection
+  #     end
+  #   end
 
-  # Map home page
-  root :to => 'products#index'
-  
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
 
-  # Install the default routes as the lowest priority.
-  #map.connect ':controller/:action/:id'
-  #map.connect ':controller/:action/:id.:format'
-  match '/:controller(/:action(/:id))'
-  
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end

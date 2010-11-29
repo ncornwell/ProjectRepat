@@ -1,0 +1,20 @@
+<%
+ # Set this here instead of on render call cause we're on ooold rails
+ file = image_select
+%>
+<div class="user_upload select" 
+  id="file_<%= file.id %>"
+  filename="<%= file.name %>"
+  src_original="<%= file.upload.url %>"
+  src_small="<%= file.upload.url(:small) %>"
+  orig_width="0"
+  orig_height="0"
+  dimensions=""
+  > 
+  <div class="image">
+    <%= image_tag(file.upload.url(:thumb)) %>
+  </div>
+  <div class="name">
+    <b><%= file.name %></b>
+  </div>
+</div>

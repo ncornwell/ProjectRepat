@@ -1,0 +1,12 @@
+<%
+    # Here we order the list by rank then by name, so, first lower ranks, then
+    # equal ranks ordered by name. 
+    @countries = Country.find(:all,
+                              :order => 'rank, name ASC')
+%>
+<select name="<%= select_name %>[country_id]" xfoo=2>
+  <% @countries.each { |country| %>
+    <option value="<%= country.id %>" <%= country.id == selected.to_i ? "selected" : "" %>><%= country.name %></option>
+  <% } %>
+</select>
+

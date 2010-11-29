@@ -1,0 +1,18 @@
+------------------------------------------------------------
+Source Code Modifications (c) 2010 Laurence A. Lee (rubyjedi @ github)
+
+Pursuant to the original terms of Subimage LLC's modified Artistic License allowing modifications (Section 3):
+
+1) To the best of my knowledge and ability, all Ruby source code files have a prominent notice that the source code has been modified from the Standard Version, and to refer to this file;
+
+2) A complete, detailed manifest of all modifications may be obtained by examining the Revision Control History;
+
+3) Subimage LLC and/or the original Copyright Holders are allowed to include or back-port these modifications into the Standard Version
+
+4) These source code modifications are otherwise released and distributed under the same terms as that of Subimage LLC's modified Artistic License in /LICENSE
+
+
+Laurence A. Lee
+rubyjedi @ github
+
+------------------------------------------------------------
