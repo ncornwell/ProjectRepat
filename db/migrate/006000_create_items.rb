@@ -16,7 +16,7 @@ class CreateItems < ActiveRecord::Migration
       t.float    :weight,                            :default => 0.0,   :null => false
       t.string   :type,               :limit => 40
       t.integer  :product_id,         :limit => 11,  :default => 0,     :null => false
-      t.integer  :is_discontinued,                   :default => false, :null => false
+      t.integer  :is_discontinued,                   :default => 0, :null => false
       t.integer  :variation_quantity, :limit => 11,  :default => 0,     :null => false
       t.integer  :variation_rank,     :limit => 3
     end
