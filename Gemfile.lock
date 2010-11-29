@@ -96,7 +96,6 @@ GEM
     rcov (0.9.9)
     sqlite3 (0.1.1)
       ffi (>= 0.6.3)
-    test-unit (2.1.2)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -115,5 +114,4 @@ DEPENDENCIES
   rails (= 3.0.0)
   rcov
   sqlite3
-  test-unit
   will_paginate!

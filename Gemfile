@@ -31,13 +31,13 @@ gem 'sqlite3'
 # end
 
 ## Ruby 1.9 Fixup Gems ##
-  gem 'test-unit', :require=>"test/unit" if (RUBY_VERSION.to_f >= 1.9)
+  # gem 'test-unit', :require=>"test/unit" if (RUBY_VERSION.to_f >= 1.9)
 
 ## Substruct Gems ##
   gem 'activemerchant', :require=>'active_merchant', :git=>"http://github.com/Shopify/active_merchant.git"
   gem 'acts_as_tree'
   gem 'ezcrypto'
-  gem 'fastercsv' unless (RUBY_VERSION.to_f >= 1.9)
+  # gem 'fastercsv' unless (RUBY_VERSION.to_f >= 1.9)
   # gem 'paperclip'
   gem 'paperclip', :git=>'http://github.com/rubyjedi/paperclip.git'
   gem 'RedCloth'
