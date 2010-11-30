@@ -37,7 +37,6 @@ module SubstructAppR3
     #   g.test_framework  :test_unit, :fixture => true
     # end
 
-    config.action_controller.perform_caching = false
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
