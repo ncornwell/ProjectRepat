@@ -7,7 +7,7 @@ class CreateCountries < ActiveRecord::Migration
       t.string  :name,        :limit => 100, :default => "",    :null => false
       t.string  :code,        :limit => 50
       t.integer :rank,        :limit => 11
-      t.boolean :is_obsolete,                :default => false, :null => false
+      t.integer :is_obsolete,                :default => 0, :null => false
     end
   end
 

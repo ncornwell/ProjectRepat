@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20100907220301) do
     t.string  "name",        :limit => 100, :default => "",    :null => false
     t.string  "code",        :limit => 50
     t.integer "rank"
-    t.boolean "is_obsolete",                :default => false, :null => false
+    t.integer "is_obsolete",                :default => 0, :null => false
   end
 
   create_table "items", :force => true do |t|
