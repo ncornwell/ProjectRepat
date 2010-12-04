@@ -18,7 +18,7 @@ body, html {
 	width: 100%;
 }
 body {
-	background-color: #fff;
+	background-color: #EDE5CE;
 }
 body, table, div, td, input, textarea {
 	font-family: 'Trebuchet MS', sans-serif;
@@ -31,8 +31,8 @@ a {
 	font-weight: bold;
 	text-decoration: none;
 }
-a:link { color: #1382b9; }
-a:visited {	color: #b954ff; }
+a:link { color: #ff0b0b; }
+a:visited {	color: #ff0b0b; }
 a.action:link, a.action:visited, a.action.bad:link, a.action.bad:visited {
 	background-color: #049abe;
 	color: #fff !important;
@@ -130,7 +130,6 @@ ul.sortable {
 
 ul.sortable li {
 	cursor: pointer;
-	cursor: hand;
 	list-style-type: none;
 	border-bottom: 1px dotted #ccc;
 	margin-bottom: 5px;
@@ -295,7 +294,6 @@ div.price {
 	line-height: 20px;
 	padding: 5px;
 	cursor: pointer;
-	cursor: hand;
 	text-align: center;
 	display:block;
 }
@@ -407,7 +405,6 @@ div.listContainer .list {
 
 *.hover {
 	cursor: pointer;
-	cursor: hand;
 }
 .hlt, tr.hlt td, tr.selected td {
 	background-color: #FFBC6C !important;
@@ -704,17 +701,15 @@ div.p * {
 }
 
 #toplinks {
-	float: right;
 	margin-right: 10px;
 	margin-top: 10px;
 	font-size: 1.1em;
-	width: 550px;
 }
 
 #toplinks li {
 	margin-left: 15px;
 	line-height: 30px;
-	float: right;
+        margin-top: 50px;
 }
 
 #searchbox {
@@ -732,7 +727,6 @@ div.p * {
 /* Div that comes before the content */
 #preContent {
 	height: 83px;
-	background-image: ;
 	background-repeat: no-repeat;
 }
 #contentBody {
