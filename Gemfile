@@ -40,6 +40,7 @@ gem 'rails', '3.0.0'
   gem 'paperclip', :git=>'http://github.com/rubyjedi/paperclip.git'
   gem 'RedCloth'
   gem 'will_paginate', :git=>"http://github.com/mislav/will_paginate.git", :branch=>"rails3"
+  gem 'RMagick'
   
   group(:test) do
     gem 'rcov'
