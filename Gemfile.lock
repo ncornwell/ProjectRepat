@@ -56,6 +56,10 @@ GEM
     acts_as_tree (0.1.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     braintree (2.6.2)
       builder
     builder (2.1.2)
@@ -100,6 +104,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    xml-simple (1.0.12)
 
 PLATFORMS
   x86-mingw32
@@ -108,6 +113,7 @@ DEPENDENCIES
   RedCloth
   activemerchant!
   acts_as_tree
+  aws-s3
   ezcrypto
   mocha
   paperclip!
