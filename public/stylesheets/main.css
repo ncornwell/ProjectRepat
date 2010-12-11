@@ -144,22 +144,24 @@ ul.sortable li p {
     display:inline-block;
     background-image: url('/images/Repat-Triangle.png');
     background-repeat: no-repeat;
-    line-height: 100px;
     width:400px;
     vertical-align: top;
+    padding: 40px;
 }
 
 .TopLinks a {
-    padding-left: 50px;
+    padding-left: 10px;
+    font-size: 12px;
 }
 
 .Slider {
-    padding: 10px;
+    padding: 10px 10px 100px 10px;
     background-color: white;
     border: 5px;
     border-color: black;
     border-style: solid;
-    margin-top: 50px;
+    margin-top: 30px;
+    display: inline-block;
      -moz-transform: rotate(7.5deg);
        -o-transform: rotate(7.5deg);
   -webkit-transform: rotate(7.5deg);
@@ -769,7 +771,6 @@ div.p * {
 
 #footer { 
 	padding-top: 20px;
-	border-top: 2px solid #3b3b3b;
 	font-size: 16px;
 	margin-bottom: 20px; 
 	margin-top: 20px;

@@ -39,15 +39,17 @@
 
                 <!-- top links -->
                 <div class="TopLinks" >
+                        <a href="/">mission</a>
                         <a href="/store">buy a shirt</a>
+                        <a href="/">get involved</a>
+                        <a href="/store/show_cart" class="submodal-600-400">cart</a>
+                        <a href="/questions/ask">contact</a>
                         <%
                                 @main_nav_tags.each_index do |i|
                                         tag = @main_nav_tags[i]
                         %>
                           <%= link_to(tag.name, :controller => 'store', :action => 'show_by_tags', :tags => [tag.name]) %>
                         <% end %>
-                        <a href="/store/show_cart" class="submodal-600-400">cart</a>
-                        <a href="/questions/ask">contact</a>
                 </div>
 		
 		<% if @customer && !@customer.new_record? %>
