@@ -33,26 +33,22 @@
 	<div id="header">
 
 		<!-- logo -->
-		<div style="float:left;">
+		<div style="display:inline-block">
 			<a href="/"><%= image_tag('Repat-Stamp.png', :alt => 'Project Repat', :plugin => 'substruct') %></a>
 		</div>
 
-                <!--<div class="leftHeader">-->
-                  <!-- top links -->
-                  <ul class="navigation" id="toplinks">
-                          <li ><a href="/store">buy a shirt</a></li>
-                          <%
-                                  @main_nav_tags.each_index do |i|
-                                          tag = @main_nav_tags[i]
-                          %>
-                                  <li>
-                                          <%= link_to(tag.name, :controller => 'store', :action => 'show_by_tags', :tags => [tag.name]) %>
-                                  </li>
-                          <% end %>
-                          <li><a href="/store/show_cart" class="submodal-600-400">Cart</a></li>
-                          <li><a href="/questions/ask">Contact Us</a></li>
-                  </ul>
-		<!--</div>-->
+                <!-- top links -->
+                <div class="TopLinks" >
+                        <a href="/store">buy a shirt</a>
+                        <%
+                                @main_nav_tags.each_index do |i|
+                                        tag = @main_nav_tags[i]
+                        %>
+                          <%= link_to(tag.name, :controller => 'store', :action => 'show_by_tags', :tags => [tag.name]) %>
+                        <% end %>
+                        <a href="/store/show_cart" class="submodal-600-400">cart</a>
+                        <a href="/questions/ask">contact</a>
+                </div>
 		
 		<% if @customer && !@customer.new_record? %>
 			<div id="customer_msg">
@@ -61,10 +57,6 @@
 				<a href="/customers/logout">log out</a>
 			</div>
 		<% end %>
-		
-		
-		<div class="clear"></div>
-
 		
 	</div>
 	<!-- End header -->
