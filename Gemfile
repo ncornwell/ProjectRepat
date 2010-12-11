@@ -6,6 +6,7 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3-ruby', :require => 'sqlite3'
+
 # gem 'sqlite3'
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -40,7 +41,7 @@ gem 'rails', '3.0.0'
   gem 'paperclip', :git=>'http://github.com/rubyjedi/paperclip.git'
   gem 'RedCloth'
   gem 'will_paginate', :git=>"http://github.com/mislav/will_paginate.git", :branch=>"rails3"
-  gem 'RMagick'
+  # gem 'rmagick', '2.1.2'
   
   group(:test) do
     gem 'rcov'
