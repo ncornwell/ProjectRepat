@@ -146,12 +146,12 @@ ul.sortable li p {
     background-repeat: no-repeat;
     width:400px;
     vertical-align: top;
-    padding: 40px;
+    padding: 52px;
 }
 
 .TopLinks a {
     padding-left: 10px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .Slider {
@@ -160,18 +160,15 @@ ul.sortable li p {
     border: 5px;
     border-color: black;
     border-style: solid;
-    margin-top: 30px;
+    margin-top: 10px;
     display: inline-block;
-     -moz-transform: rotate(7.5deg);
-       -o-transform: rotate(7.5deg);
-  -webkit-transform: rotate(7.5deg);
-      -ms-transform: rotate(7.5deg);
-          transform: rotate(7.5deg);
-             filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
-                      M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104);
-         -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104,sizingMethod='auto expand')";
-                      
-               zoom: 1;
+    -moz-transform: rotate(3.5deg);
+    -o-transform: rotate(3.5deg);
+    -webkit-transform: rotate(3.5deg);
+    -ms-transform: rotate(3.5deg);
+    transform: rotate(3.5deg);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104,sizingMethod='auto expand')";
+    zoom: 1;
 
 }
 
@@ -290,11 +287,8 @@ div.padLeft {
 	padding-left:10px;
 }
 div.price {
-	background-color: #6ABE32;
-	color: #fff;
 	font-size: 25px;
 	padding: 5px 10px;
-	text-align: center;
 	font-style: italic;
 	-moz-border-radius: 10px;
 }
