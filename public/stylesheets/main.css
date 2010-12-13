@@ -632,48 +632,15 @@ input.error {
 
 /* PRODUCT 'CHIPS' */
 .product {
-	width: 150px;
+        display:inline-block;
 	margin-right: 5px;
-	float: left;
-	background-image: url(/images/public-ui/item-middle.gif);
-	background-repeat: repeat-y;
-}
-.product_top {
-	width: 150px;
-	height: 10px;
-	background-image: url(/images/public-ui/item-top.gif);
-	background-repeat: no-repeat;
-}
-.product_bottom {
-	width: 150px;
-	height: 20px;
-	background-image: url(/images/public-ui/item-bottom.gif);
-	background-repeat: no-repeat;
-}
-.product_main {
-	margin-left: 12px;
-	margin-right: 20px;
-	margin-top: 10px;
-	width: 115px;
-	overflow:hidden;
-	text-align: center;
 }
 .product_image {
-	height: 130px;
-	overflow: hidden;
+        display:block;
 }
 .product_title {
-	height: 40px;
-	margin: 4px 0px;
-	overflow: hidden;
-}
-.product .money {
-	display: block;
-	background-color: #69bf32;
-	color: #fff;
-	padding: 2px;
-	overflow: hidden;
-	-moz-border-radius: 5px;
+        display:block;
+        
 }
 .product .icon {
 	position:absolute;
