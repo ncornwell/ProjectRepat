@@ -13,6 +13,7 @@
 	margin: 0px;
 }
 body, html {
+    text-align: center;
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
@@ -144,9 +145,11 @@ ul.sortable li p {
     display:inline-block;
     background-image: url('/images/Repat-Triangle.png');
     background-repeat: no-repeat;
-    width:400px;
+    width:425px;
     vertical-align: top;
-    padding: 52px;
+    padding-left: 10px;
+    padding-bottom: 50px;
+    padding-top: 50px;
 }
 
 .TopLinks a {
@@ -155,21 +158,10 @@ ul.sortable li p {
 }
 
 .Slider {
-    padding: 10px 10px 100px 10px;
-    background-color: white;
-    border: 5px;
-    border-color: black;
-    border-style: solid;
-    margin-top: 10px;
-    display: inline-block;
-    -moz-transform: rotate(3.5deg);
-    -o-transform: rotate(3.5deg);
-    -webkit-transform: rotate(3.5deg);
-    -ms-transform: rotate(3.5deg);
-    transform: rotate(3.5deg);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104,sizingMethod='auto expand')";
-    zoom: 1;
+    
 
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .navigation a, .navigation a:link, .navigation a:visited {
@@ -688,8 +680,9 @@ div.p * {
 
 
 #container {
-	width: 800px;
-	margin: 0px auto;
+	width: 900px;
+	margin-left: auto;
+        margin-right: auto;
 }
 
 #header {
@@ -730,7 +723,8 @@ div.p * {
 	clear:both;
 }
 
-#footer { 
+#footer {
+        display: inline-block;
 	padding-top: 20px;
 	font-size: 16px;
 	margin-bottom: 20px; 
