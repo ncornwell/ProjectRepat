@@ -143,23 +143,9 @@ ul.sortable li p {
 
 .TopLinks {
     display:inline-block;
-    background-image: url('/images/Repat-Triangle.png');
-    background-repeat: no-repeat;
-    width:460px;
-    vertical-align: top;
-    padding-left: 0px;
-    padding-bottom: 50px;
-    padding-top: 50px;
-}
-
-.TopLinks a {
-    padding-left: 10px;
-    font-size: 14px;
 }
 
 .Slider {
-    
-
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -686,20 +672,11 @@ div.p * {
 }
 
 #header {
-	margin-bottom: 20px;
 }
 
 #toplinks {
-	margin-right: 10px;
-	margin-top: 10px;
-	font-size: 1.1em;
 }
 
-#toplinks li {
-	margin-left: 15px;
-	line-height: 30px;
-        margin-top: 50px;
-}
 
 #searchbox {
 	float:right;
@@ -725,14 +702,6 @@ div.p * {
 
 #footer {
         display: inline-block;
-	padding-top: 20px;
-	font-size: 16px;
-	margin-bottom: 20px; 
-	margin-top: 20px;
-}
-#footer li {
-	margin-right: 20px;
-	margin-left: 0px;
 }
 
 #big_product_image {

@@ -31,25 +31,24 @@
 <!-- Begin Container -->
 <div id="container">
 	<div id="header">
-
-		<!-- logo -->
-		<div style="display:inline-block">
-			<a href="/"><%= image_tag('Repat-Stamp.png', :alt => 'Project Repat', :plugin => 'substruct') %></a>
-		</div>
-
                 <!-- top links -->
                 <div class="TopLinks" >
+
+                  <img src="/images/Repat-Header.png" alt="Repat Header" USEMAP="#headerMap" />
+                  <map id="headerMap" name="headerMap">
+                    <area shape="rect" coords="1,0,314,144" href="/" alt="home" title="home"    />
+                    <area shape="rect" coords="331,107,438,144" href="/" alt="mission" title="mission"    />
+                    <area shape="rect" coords="456,107,591,144" href="/store" alt="buy a shirt" title="buy a shirt"    />
+                    <area shape="rect" coords="613,107,818,144" href="/" alt="become an agent" title="become an agent"    />
+                    <area shape="rect" coords="840,107,895,144" href="" alt="cart" title="cart" onclick="SUBMODAL.show('/store/show_cart', 600, 400, null, true);return false;"   />
+                  </map>
+                  <!--
                         <a href="/">mission</a>
                         <a href="/store">buy a shirt</a>
                         <a href="/">get involved</a>
                         <a href="/store/show_cart" class="submodal-600-400">cart</a>
                         <a href="/questions/ask">contact</a>
-                        <%
-                                @main_nav_tags.each_index do |i|
-                                        tag = @main_nav_tags[i]
-                        %>
-                          <%= link_to(tag.name, :controller => 'store', :action => 'show_by_tags', :tags => [tag.name]) %>
-                        <% end %>
+                  -->
                 </div>
 		
 		<% if @customer && !@customer.new_record? %>
@@ -73,18 +72,15 @@
 	<!-- End content body -->
 
 	<div id="footer">
-		<ul class="navigation">
-			<li><a href="/">repat home</a></li>
-			<li><a href="/questions/faq">faq</a></li>
-			<li><a href="/questions/ask">contact us</a></li>
-			<li><a href="/blog">blog</a></li>
-			<li><a href="/store/show_cart" class="submodal-600-400">cart</a></li>
-		</ul>
+          <img src="/images/Repat-Footer.png" alt="Repat Footer" USEMAP="#footerMap" />
+          <map id="footerMap" name="footerMap">
+            <area shape="rect" coords="8,56,247,127" href="http://www.facebook.com/pages/Project-Repat/151226798258064" alt="facebook" title="facebook"    />
+            <area shape="rect" coords="294,56,473,127" href="/" alt="twitter" title="twitter" />
+            <area shape="rect" coords="496,33,585,127" href="/questions/faq" alt="faq" title="faq" />
+            <area shape="rect" coords="623,33,718,127" href="/blog" alt="blog" title="blog" />
+            <area shape="rect" coords="742,13,885,126" href="/questions/ask" alt="contact us" title="contact us" />
+          </map>
 	</div>
-
-	<div class="clear"></div>
-	<br/>
-	
 </div>
 <!-- End container -->
 
