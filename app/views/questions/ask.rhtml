@@ -22,12 +22,9 @@
         <%= text_area 'question', 'long_question', :cols => 60, :rows => 8, :class => 'textArea' %>
       	<%= error_message_on(:question, :long_question) %>
       </div>
-
-      <div class="clear">&nbsp;</div>
-      <p>
-  	    <%= submit_tag "Send your question to us", :class => 'button' %>
-        <div class="clear">&nbsp;</div>
-      </p>
+      
+          <%= submit_tag "Send your question to us", :class => 'button' %>
+      
 	  </form>
 	</div>
 	

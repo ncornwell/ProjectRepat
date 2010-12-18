@@ -593,9 +593,6 @@ input.error {
 .form_block {
 	margin: 10px 0px 20px 0px;
 	padding: 20px;
-	background-image: url(/images/public-ui/column-fade-middle.gif);
-	background-repeat: repeat-x;
-	border-top: 2px solid #ccc;
 }
 .form_block h2 {
 	margin-bottom: 10px;
