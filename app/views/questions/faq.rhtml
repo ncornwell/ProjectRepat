@@ -1,7 +1,6 @@
-<table class="tealBg" id="left" style="min-height:700px;">
+<table style="min-height:700px;">
   <tr>
-    <td>
-      <h1><%= @title %></h1>
+    <td width="700px">
       <% for question in @questions %>
         <a name="<%= question.id %>">
           <h2><%= question.short_question %></h2>
@@ -13,7 +12,6 @@
       <% end %>
     </td>
     <td>
-      <h1>FAQ List</h1>
       <ul>
         <% for question in @questions %>
           <li><a href="#<%= question.id %>"><%= question.short_question %></a></li>
