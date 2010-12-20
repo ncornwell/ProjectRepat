@@ -55,7 +55,7 @@ class Promotion < ActiveRecord::Base
 	#
 	def self.any_active?
    time_now = Time.current.to_s(:db) 
-   Promotion.where("start < ?",time_now).where("end > ?",time_now).count > 0
+   Promotion.where("start < ?",time_now).where("#{Product.connection.quote_column_name("end")} > ?",time_now).count > 0
   end
   
   def is_active?
