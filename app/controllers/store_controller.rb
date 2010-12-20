@@ -55,7 +55,7 @@ class StoreController < ApplicationController
   def search
     @search_term = params[:search_term]
     @title = "Search Results for: #{@search_term}"
-    @products = Product.available.order('name ASC').where(["(name LIKE ? OR code = ?)", "%#{@search_term}%", @search_term]).paginate(:page => params[:page],:per_page => 10)
+    @products = Product.available.order('name ASC').where(["(#{OurModel.connection.quote_column_name("name")} LIKE ? OR #{OurModel.connection.quote_column_name("code")} = ?)", "%#{@search_term}%", @search_term]).paginate(:page => params[:page],:per_page => 10)
     # If only one product comes back, take em directly to it.
     if @products.count == 1
       redirect_to :action => 'show', :id => @products[0].code and return
