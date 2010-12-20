@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
     @title = "FAQ (Frequently Asked Questions)"
     @questions = Question.find(
       :all,
-      :conditions => ["#{Question.connection.quote_column_name('featured')} = ?", 1],
+      :conditions => ["#{Question.connection.quote_column_name('featured')} = ?", true],
       :order => "-rank DESC, times_viewed DESC"
     )
   end
