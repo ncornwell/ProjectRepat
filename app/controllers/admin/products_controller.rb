@@ -34,7 +34,7 @@ class Admin::ProductsController < Admin::BaseController
       @viewing_by = @list_options[0].id
     end
 
-    @tag = Tag.find(:first, :conditions => ["id=?", @viewing_by])
+    @tag = Tag.find(:first, :conditions => ["#{Tag.connection.quote_column_name("id")}=?", @viewing_by])
     if @tag == nil then
 			redirect_to :action => 'list'
 			return
@@ -231,7 +231,7 @@ class Admin::ProductsController < Admin::BaseController
 	# that haven't been saved yet.
 	#
 	def remove_variation_ajax
-	  @v = Variation.find(:first, :conditions => ["id = ?", params[:id]])
+	  @v = Variation.find(:first, :conditions => ["#{Variation.connection.quote_column_name("id")} = ?", params[:id]])
 	  @v.destroy if @v
 	  render :text=>"", :layout=>false
   end
@@ -243,7 +243,7 @@ class Admin::ProductsController < Admin::BaseController
     params[:image_list].each_index do |i|
       pi = ProductImage.find(
         :first,
-        :conditions => ["image_id = ? AND product_id = ?", params[:image_list][i], params[:id]]
+        :conditions => ["#{ProductImage.connection.quote_column_name("image_id")} = ? AND #{ProductImage.connection.quote_column_name("product_id")} = ?", params[:image_list][i], params[:id]]
       )
       if pi
         pi.rank = i

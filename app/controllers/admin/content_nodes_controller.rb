@@ -39,7 +39,7 @@ class Admin::ContentNodesController < Admin::BaseController
     @content_nodes = ContentNode.paginate(
       :order => sort,
       :page => params[:page],
-      :conditions => ["type = ?", @viewing_by],
+      :conditions => ["#{ContentNode.connection.quote_column_name("type")} = ?", @viewing_by],
       :per_page => 10
     )
     session[:last_content_list_view] = @viewing_by
@@ -63,7 +63,7 @@ class Admin::ContentNodesController < Admin::BaseController
       @viewing_by = @list_options[0].id
     end
 
-    @section = Section.find(:first, :conditions => ["id=?", @viewing_by])
+    @section = Section.find(:first, :conditions => ["#{Section.connection.quote_column_name("id")}=?", @viewing_by])
     if @section == nil then
 			redirect_to :action => 'list'
 			return

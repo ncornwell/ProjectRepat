@@ -2,7 +2,7 @@
 # Source Code Modifications (c) 2010 Laurence A. Lee, 
 # See /RUBYJEDI.txt for Licensing and Distribution Terms
 class Affiliate < ActiveRecord::Base
-  SQL_VALID_ORDER_STATUS = "(order_status_code_id = 6 OR order_status_code_id = 7)"
+  SQL_VALID_ORDER_STATUS = "(#{connection.quote_column_name("order_status_code_id")} = 6 OR #{connection.quote_column_name("order_status_code_id")} = 7)"
   # Associations
   has_many :orders
   # Earned orders are valid referred orders.
@@ -43,7 +43,7 @@ class Affiliate < ActiveRecord::Base
 	def self.find_unpaid
 	  affiliates = find(
 	    :all, 
-	    :conditions => ["is_enabled = ?", true],
+	    :conditions => ["#{connection.quote_column_name("is_enabled")} = ?", true],
 	    :include => [:orders]
 	  )
 	  affiliates.reject{|a| 0 >=  a.total_owed}
@@ -67,7 +67,7 @@ class Affiliate < ActiveRecord::Base
       end
       # find any affiliates with this same code string
       # if none are found the while loop exits
-      record = find(:first, :conditions => ["code = ?", test_code])
+      record = find(:first, :conditions => ["#{connection.quote_column_name("code")} = ?", test_code])
     end
     # return our random code
     return test_code
@@ -81,7 +81,7 @@ class Affiliate < ActiveRecord::Base
     find(
       :first,
       :conditions => [
-        "email_address = ? AND code = ? AND is_enabled = ?", 
+        "#{connection.quote_column_name("email_address")} = ? AND #{connection.quote_column_name("code")} = ? AND #{connection.quote_column_name("is_enabled")} = ?", 
         email, code, true
       ]
     )
@@ -117,7 +117,7 @@ class Affiliate < ActiveRecord::Base
   
   def get_earnings_for_month(d)
     conds = [
-      "created_on BETWEEN DATE(?) AND DATE(?)", 
+      "#{connection.quote_column_name("created_on")} BETWEEN DATE(?) AND DATE(?)", 
       d.beginning_of_month, d.end_of_month
     ]
     orders = self.valid_referred_orders.find(:all, :conditions => conds)

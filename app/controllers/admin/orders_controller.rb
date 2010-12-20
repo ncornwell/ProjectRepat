@@ -45,17 +45,16 @@ class Admin::OrdersController < Admin::BaseController
     @title = "Order List"
 
     conditions = nil
-
     case @viewing_by
       when @list_options[0]
-        conditions = 'order_status_code_id = 5'
+        conditions = "#{Order.connection.quote_column_name("order_status_code_id")} = 5"
       when @list_options[1]
-        conditions = 'order_status_code_id = 3
-                      OR order_status_code_id = 4'
+        conditions = "#{Order.connection.quote_column_name("order_status_code_id")} = 3
+                      OR #{Order.connection.quote_column_name("order_status_code_id")} = 4"
       when @list_options[2]
-        conditions = 'order_status_code_id = 5
-                      OR order_status_code_id = 6
-                      OR order_status_code_id = 7'
+        conditions = "#{Order.connection.quote_column_name("order_status_code_id")} = 5
+                      OR #{Order.connection.quote_column_name("order_status_code_id")} = 6
+                      OR #{Order.connection.quote_column_name("order_status_code_id")} = 7"
       when @list_options[3]
         conditions = nil
     end
@@ -116,7 +115,7 @@ class Admin::OrdersController < Admin::BaseController
     setup_search(params)
     @orders = Order.paginate(
       :order => "orders.created_on DESC",
-      :conditions => ['notes LIKE ?', "%#{@search_term}%"],
+      :conditions => ["#{Order.connection.quote_column_name("notes")} LIKE ?", "%#{@search_term}%"],
       :include => :order_user,
       :page => params[:page],
       :per_page => 30
@@ -198,7 +197,7 @@ class Admin::OrdersController < Admin::BaseController
     @products = Item.find(
       :all,
       :conditions => [
-        "id NOT IN(?)", 
+        "#{Item.connection.quote_column_name("id")} NOT IN(?)", 
         @order.order_line_items.collect {|i| i.item_id}.join(',')
       ]
     )

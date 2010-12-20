@@ -45,7 +45,7 @@ class Promotion < ActiveRecord::Base
       end
       # find any affiliates with this same code string
       # if none are found the while loop exits
-      record = find(:first, :conditions => ["code = ?", test_code])
+      record = find(:first, :conditions => ["#{connection.quote_column_name("code")} = ?", test_code])
     end
     # return our random code
     return test_code

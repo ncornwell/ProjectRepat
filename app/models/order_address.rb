@@ -28,7 +28,7 @@ class OrderAddress < ActiveRecord::Base
   # Finds the shipping address for a given OrderUser
   def self.find_shipping_address_for_user(user)
     find(:first,
-    :conditions => ["order_user_id = ? AND is_shipping = 1", user.id])
+    :conditions => ["#{connection.quote_column_name("order_user_id")} = ? AND #{connection.quote_column_name("is_shipping")} = 1", user.id])
   end
 
   def name

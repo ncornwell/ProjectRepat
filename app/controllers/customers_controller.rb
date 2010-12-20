@@ -121,7 +121,7 @@ class CustomersController < ApplicationController
   def order_details
     @order = Order.find(
       :first,
-      :conditions => ["order_number = ? AND order_user_id = ?", params[:id], @customer.id]
+      :conditions => ["#{Order.connection.quote_column_name("order_number")} = ? AND #{Order.connection.quote_column_name("order_user_id")} = ?", params[:id], @customer.id]
     )
     # 404 for non found...
     render(:file => "#{Rails.root}/public/404.html", :status => 404) and return unless @order
@@ -145,7 +145,7 @@ class CustomersController < ApplicationController
     @products = Item.find(
       :all,
       :conditions => [ 
-        "id NOT IN(?)", 
+        "#{Item.connection.quote_column_name("id")} NOT IN(?)", 
         @order.order_line_items.collect {|i| i.item_id}.join(',') 
       ]
     )
@@ -213,13 +213,13 @@ class CustomersController < ApplicationController
   def download_for_order
     order = Order.find(
       :first,
-      :conditions => ["order_number = ? AND order_user_id = ?", params[:order_number], @customer.id]
+      :conditions => ["#{Order.connection.quote_column_name("order_number")}  = ? AND #{Order.connection.quote_column_name("order_user_id")}  = ?", params[:order_number], @customer.id]
     )
     # 404 for non found...
     render(:file => "#{Rails.root}/public/404.html", :status => 404) and return unless order
     
     # Now find download...
-    file = Download.find(:first, :conditions => ["id = ?", params[:download_id]])
+    file = Download.find(:first, :conditions => ["#{Download.connection.quote_column_name("id")}  = ?", params[:download_id]])
     
     # Ensure it belongs to the passed in order.
     if file && order.downloads.include?(file)

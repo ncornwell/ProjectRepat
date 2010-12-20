@@ -72,14 +72,14 @@ class Admin::FilesController < Admin::BaseController
         @files = UserUpload.paginate(
           :order => sort,
           :page => params[:page],
-          :conditions => ["type = ?", @viewing_by], #  and thumbnail is NULL
+          :conditions => ["#{UserUpload.connection.quote_column_name("type")} = ?", @viewing_by], #  and thumbnail is NULL
           :per_page => 30
         )
       else
         @files = UserUpload.paginate(
           :order => sort,
           :page => params[:page],
-          # :conditions => "thumbnail is NULL",
+          # :conditions => "#{connection.quote_column_name("thumbnail")} is NULL",
           :per_page => 30
         )
       end

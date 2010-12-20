@@ -56,7 +56,7 @@ class Admin::PromotionsController < Admin::BaseController
     @title = "Orders for #{@promotion.code}"
     @orders = Order.paginate(
       :order => 'created_on DESC',
-      :conditions => ["promotion_id = ?", @promotion.id],
+      :conditions => ["#{Order.connection.quote_column_name("promotion_id")} = ?", @promotion.id],
       :page => params[:page],
       :per_page => 30
     )

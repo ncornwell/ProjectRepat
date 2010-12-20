@@ -27,7 +27,7 @@ class OrderShippingType < ActiveRecord::Base
   def self.get_domestic
     find(
       :all, 
-      :conditions => "is_domestic = 1",
+      :conditions => "#{connection.quote_column_name("is_domestic")} = 1",
       :order => "price ASC"
     )
   end
@@ -35,7 +35,7 @@ class OrderShippingType < ActiveRecord::Base
   def self.get_foreign
     find(
       :all, 
-      :conditions => "is_domestic = 0",
+      :conditions => "#{connection.quote_column_name("is_domestic")} = 0",
       :order => "price ASC"
     )
   end
@@ -53,7 +53,7 @@ class OrderShippingType < ActiveRecord::Base
     if self.weights.size > 0
       proper_weight = self.weights.find(
         :first,
-        :conditions => ["? BETWEEN min_weight AND max_weight", weight]
+        :conditions => ["? BETWEEN #{connection.quote_column_name("min_weight")} AND #{connection.quote_column_name("max_weight")}", weight]
       )
       price = proper_weight.price if proper_weight
     end

@@ -28,7 +28,7 @@ class Section < ActiveRecord::Base
 	def self.find_ordered_parents
 	  find(
       :all,
-      :conditions => "parent_id IS NULL OR parent_id = 0",
+      :conditions => "#{connection.quote_column_name("parent_id")} IS NULL OR #{connection.quote_column_name("parent_id")} = 0",
       :order => "-rank DESC"
     )
   end

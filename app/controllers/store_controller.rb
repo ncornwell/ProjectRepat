@@ -17,11 +17,12 @@ class StoreController < ApplicationController
       :confirm_order, :finish_order
     ]
 
-  before_filter :ssl_required,
-    :only => [
-      :checkout, :select_shipping_method, :view_shipping_method,
-      :set_shipping_method, :confirm_order, :finish_order
-    ]
+# removed ssl require since we're using paypal
+#  before_filter :ssl_required,
+#    :only => [
+#      :checkout, :select_shipping_method, :view_shipping_method,
+#      :set_shipping_method, :confirm_order, :finish_order
+#    ]
   
 
   if Preference.get_value_is_true?('store_test_transactions')
@@ -110,7 +111,7 @@ class StoreController < ApplicationController
   #
   def display_product
     logger.warn("StoreController::display_product is deprecated. Please use the 'product' partial instead.")
-    @product = Product.find(:first, :conditions => ["id = ?", params[:id]])
+    @product = Product.find(:first, :conditions => ["#{Product.connection.quote_column_name("id")} = ?", params[:id]])
     if (@product.images[0]) then
       @image = @product.images[0]
     else
@@ -131,7 +132,7 @@ class StoreController < ApplicationController
     @variations = @product.variations.find(
       :all, 
       :order => '-variation_rank DESC',
-      :conditions => 'quantity > 0'
+      :conditions => "#{Variation.connection.quote_column_name("quantity")} > 0"
     )
   end
   
@@ -354,7 +355,7 @@ class StoreController < ApplicationController
       # Find or initialize order.
       @order = Order.find(
         :first,
-        :conditions => ["id = ?", session[:order_id]]
+        :conditions => ["#{Order.connection.quote_column_name("id")}= ?", session[:order_id]]
       )
       @order ||= Order.new
       sanitize!

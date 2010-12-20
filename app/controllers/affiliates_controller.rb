@@ -98,7 +98,7 @@ class AffiliatesController < ApplicationController
     @orders = @affiliate.orders.find(
       :all,
       :conditions => [
-        "created_on BETWEEN DATE(?) AND DATE(?)", 
+        "#{Order.connection.quote_column_name("created_on")} BETWEEN DATE(?) AND DATE(?)", 
         @date, @date.end_of_month
       ]
     )

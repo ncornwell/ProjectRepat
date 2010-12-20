@@ -74,7 +74,7 @@ class Admin::PreferencesController < Admin::BaseController
   def remove_shipping_type_ajax
     @type = OrderShippingType.find(
       :first,
-      :conditions => ["id = ?", params[:id]]
+      :conditions => ["#{OrderShippingType.connection.quote_column_name("id")} = ?", params[:id]]
     )
     @type.destroy if @type
     # Render nothing to denote success
@@ -105,7 +105,7 @@ class Admin::PreferencesController < Admin::BaseController
 	# that haven't been saved yet.
 	#
 	def remove_shipping_variation_ajax
-	  @v = OrderShippingWeight.find(:first, :conditions => ["id = ?", params[:id]])
+	  @v = OrderShippingWeight.find(:first, :conditions => ["#{OrderShippingWeight.connection.quote_column_name("id")} = ?", params[:id]])
 	  @v.destroy if @v
 	  render :text=>"", :layout=>false
   end

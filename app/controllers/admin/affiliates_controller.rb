@@ -76,7 +76,7 @@ class Admin::AffiliatesController < Admin::BaseController
     @orders = @affiliate.orders.find(
       :all,
       :conditions => [
-        "created_on BETWEEN DATE(?) AND DATE(?)", 
+        "#{Order.connection.quote_column_name("created_on")} BETWEEN DATE(?) AND DATE(?)", 
         @date, @date.end_of_month
       ]
     )
@@ -92,7 +92,7 @@ class Admin::AffiliatesController < Admin::BaseController
       else
         @date = Date.parse(d)
       end
-      conds = ["DATE(created_at) = DATE(?)", @date]
+      conds = ["DATE(#{AffiliatePayment.connection.quote_column_name("created_at")}) = DATE(?)", @date]
       @title = "Affiliate Payments - #{@date.strftime('%m/%d/%Y')}"
     else
       conds = []

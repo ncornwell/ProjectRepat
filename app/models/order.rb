@@ -128,7 +128,7 @@ class Order < ActiveRecord::Base
     orders = []
     with_scope(:find => { 
       :conditions => [
-        "(order_status_code_id = 5 OR order_status_code_id = 6 OR order_status_code_id = 7)"
+        "(#{connection.quote_column_name("order_status_code_id")} = 5 OR #{connection.quote_column_name("order_status_code_id")} = 6 OR #{connection.quote_column_name("order_status_code_id")} = 7)"
       ] 
     }) do
       orders = find(args, options)
@@ -168,7 +168,7 @@ class Order < ActiveRecord::Base
     record = Object.new
     while record
       random = rand(999999999)
-      record = find(:first, :conditions => ["order_number = ?", random])
+      record = find(:first, :conditions => ["#{connection.quote_column_name("order_number")} = ?", random])
     end
     return random
   end
@@ -381,7 +381,7 @@ class Order < ActiveRecord::Base
     # Find promotion based on code entered
     promo = Promotion.find(
       :first,
-      :conditions => ["code = ?", sanitized_code]
+      :conditions => ["#{connection.quote_column_name("code")} = ?", sanitized_code]
     )
     # Don't apply the same promotion multiple times.
     return false if self.promotion == promo
@@ -486,7 +486,7 @@ class Order < ActiveRecord::Base
     end
     item = self.order_line_items.find(
       :first,
-      :conditions => ["item_id = ?", product.id]
+      :conditions => ["#{connection.quote_column_name("item_id")} = ?", product.id]
     )
     if item
       # Always set price, as it might have changed...
@@ -507,7 +507,7 @@ class Order < ActiveRecord::Base
   def remove_product(product, quantity=nil)
     item = self.order_line_items.find(
       :first,
-      :conditions => ["item_id = ?", product.id]
+      :conditions => ["#{connection.quote_column_name("item_id")} = ?", product.id]
     )
     if item
       if quantity.nil?
@@ -569,7 +569,7 @@ class Order < ActiveRecord::Base
 
   # Order status name
   def status
-    code = OrderStatusCode.find(:first, :conditions => ["id = ?", self.order_status_code_id])
+    code = OrderStatusCode.find(:first, :conditions => ["#{connection.quote_column_name("id")} = ?", self.order_status_code_id])
     code.name
   end
 
@@ -650,7 +650,7 @@ class Order < ActiveRecord::Base
         logger.info(new_item.inspect+"\n")
         new_item.quantity = quantity
         new_item.item_id = id
-        new_item.unit_price = Item.find(:first, :conditions => "id = #{id}").price
+        new_item.unit_price = Item.find(:first, :conditions => "#{connection.quote_column_name("id")} = #{id}").price
         new_item.save
       end
     end
@@ -976,7 +976,7 @@ class Order < ActiveRecord::Base
   #
   # I'm getting around this by passing the text into the mailer.
   def deliver_receipt
-    @content_node = ContentNode.find(:first, :conditions => ["name = ?", 'OrderReceipt'])
+    @content_node = ContentNode.find(:first, :conditions => ["#{connection.quote_column_name("name")} = ?", 'OrderReceipt'])
     if @content_node
       OrdersMailer.receipt(self, @content_node.content).deliver
     else

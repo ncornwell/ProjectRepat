@@ -58,7 +58,7 @@ class OrderUser < ActiveRecord::Base
   def self.authenticate(email, password)
     user = find(
       :first,
-      :conditions => ["email_address = ?", email]
+      :conditions => ["#{connection.quote_column_name("email_address")} = ?", email]
     )    
     return nil if !user
     
