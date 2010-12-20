@@ -2,7 +2,7 @@
     # Here we order the list by rank then by name, so, first lower ranks, then
     # equal ranks ordered by name. 
     @countries = Country.find(:all,
-                              :conditions => ["#{connection.quote_column_name("is_obsolete")} != ?", 1],
+                              :conditions => ["#{Country.connection.quote_column_name("is_obsolete")} != ?", 1],
                               :order => 'rank, name ASC')
 %>
 <select name="<%= select_name %>[country_id]" xfoo=1>
