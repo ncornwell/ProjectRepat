@@ -27,7 +27,7 @@ class OrderShippingType < ActiveRecord::Base
   def self.get_domestic
     find(
       :all, 
-      :conditions => "#{connection.quote_column_name("is_domestic")} = 1",
+      :conditions => "#{connection.quote_column_name("is_domestic")} = true",
       :order => "price ASC"
     )
   end
@@ -35,7 +35,7 @@ class OrderShippingType < ActiveRecord::Base
   def self.get_foreign
     find(
       :all, 
-      :conditions => "#{connection.quote_column_name("is_domestic")} = 0",
+      :conditions => "#{connection.quote_column_name("is_domestic")} = false",
       :order => "price ASC"
     )
   end
