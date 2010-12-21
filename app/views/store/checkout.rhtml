@@ -4,15 +4,6 @@
   <h1>Secure Order Form - Step 1 of 3</h1>
 
   <h2>Please fill in the fields below</h2>
-  <p class="hlt">
-  <% if request.ssl? %>
-    <%= image_tag "icons/png-8/24-security-lock.png", :plugin => 'substruct' %>
-    All information transmitted is <b>secure</b>.
-  <% else %>
-    <%= image_tag "icons/png-8/24-security-lock-open.png", :plugin => 'substruct' %>
-    All information transmitted is <b>UNSECURE</b>.
-  <% end %>
-  </p>
 
   <p>
     Once you are done entering your information, scroll to the <a href="#bottom">bottom of the page</a> and press the <i>Submit Order Information</i> button.
@@ -117,12 +108,6 @@
   <h1>You Are Buying</h1>
   <%= render(:partial => 'cart_contents', :locals => {:cart => @order}) %>
 
-  <%= render(:partial => 'clear_cart') %>
-
-  <h2>Need help?</h2>
-  <ul>
-    <li><a href="/contact">Contact us</a></li>
-  </ul>
 </div>
 
 <div class="clear">&nbsp;</div>

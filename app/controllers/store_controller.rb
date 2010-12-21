@@ -219,7 +219,7 @@ class StoreController < ApplicationController
         logger.info("\n\nEXISTING ORDER INIT\n\n")
         initialize_existing_order
       end
-      render :layout => 'checkout' and return
+      render :layout => 'main' and return
     elsif request.post?
       # Turned into a private method now so we don't have checkout/do_checkout...
       do_checkout()
