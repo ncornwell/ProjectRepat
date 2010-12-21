@@ -45,7 +45,8 @@ class ContentNodesController < ApplicationController
   # Can render HTML or RSS format.
   def index
     @title = "Blog"
-    @content_nodes = Blog.all(:conditions => "#{Blog.connection.quote_column_name("display_on")} <= CURRENT_DATE',:order => 'display_on DESC, created_on DESC")
+    @content_nodes = Blog.all(:conditions => "#{Blog.connection.quote_column_name("display_on")} <= CURRENT_DATE",
+      :order => "#{Blog.connection.quote_column_name("display_on")} DESC, created_on DESC")
     respond_to do |format|
       format.html{ @content_nodes = @content_nodes.paginate(:per_page=>5, :page=>params[:page]) }
       format.rss { render :layout=>false }
