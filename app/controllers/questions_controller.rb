@@ -43,11 +43,11 @@ class QuestionsController < ApplicationController
 	    ask()
 	    render :action => 'ask' and return
     else
-	    begin
         OrdersMailer.inquiry(
           params[:question][:email_address],
           params[:question][:long_question]
         ).deliver
+	    begin
         flash[:notice] = "Message sent successfully."
         redirect_to '/' and return
       rescue
