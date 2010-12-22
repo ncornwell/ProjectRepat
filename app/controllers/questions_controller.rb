@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
           @question.email_address,
           @question.long_question)
 
-      OrdersMailer.deliver(mail, show_warning)
+      OrdersMailer.deliver(mail, false)
       
 	    begin
         flash[:notice] = "Message sent successfully."
