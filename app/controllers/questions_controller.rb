@@ -43,11 +43,10 @@ class QuestionsController < ApplicationController
 	    ask()
 	    render :action => 'ask' and return
     else
-      mail = OrdersMailer.inquiry(
+      OrdersMailer.inquiry(
           @question.email_address,
-          @question.long_question)
+          @question.long_question).deliver
 
-      OrdersMailer.deliver(mail, false)
       
 	    begin
         flash[:notice] = "Message sent successfully."
