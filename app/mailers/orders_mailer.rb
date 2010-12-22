@@ -6,6 +6,7 @@ class OrdersMailer < ActionMailer::Base
 
   def inquiry(addy_from, email_text)
     setup_defaults()
+
     @subject  = "Inquiry from the site"
     @addy_from = addy_from
     @email_text = email_text
