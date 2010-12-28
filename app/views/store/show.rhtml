@@ -17,11 +17,11 @@
                       <% end %>
                     </a>
                     <br />
-                      <div style="display:inline-block;">
+                      <div >
                         <!-- thumbnails! -->
                         <% for @p_image in @images do %>
                           <% next if @p_image == @default_image %>
-                                <div>
+                                <div style="display:inline-block;">
                                   <% if @p_image.upload.url(:thumb) then %>
                                     <a href="<%= @p_image.upload.url %>"
                                       rel="lightbox[product_image]"
