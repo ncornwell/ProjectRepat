@@ -3,9 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0'
 
 
-if (:development)
-  gem 'sqlite3'
-end
+gem 'sqlite3', :only => :development
 
 # Bundle the extra gems:
 # gem 'bj'
