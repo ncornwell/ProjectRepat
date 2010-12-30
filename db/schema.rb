@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100907220301) do
+ActiveRecord::Schema.define(:version => 20101230072203) do
 
   create_table "affiliate_payments", :force => true do |t|
     t.string   "number"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20100907220301) do
     t.datetime "created_at"
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "product_id", :default => 0, :null => false
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "content_nodes", :force => true do |t|
     t.integer  "user_id"
     t.string   "name",       :limit => 200, :default => "", :null => false
@@ -65,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20100907220301) do
     t.string  "name",        :limit => 100, :default => "",    :null => false
     t.string  "code",        :limit => 50
     t.integer "rank"
-    t.integer "is_obsolete",                :default => 0, :null => false
+    t.boolean "is_obsolete",                :default => false, :null => false
   end
 
   create_table "items", :force => true do |t|

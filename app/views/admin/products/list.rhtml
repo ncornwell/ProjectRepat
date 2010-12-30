@@ -27,7 +27,7 @@
     <tr class="<%= alternate %>">
       <td>
         <%= link_to(h(product.name), :action => 'edit', :id => product) %>
-        <br>
+        <br />
         <span class="info">
           <%= product.code %>
         </span>
@@ -42,8 +42,8 @@
 						:plugin => 'substruct'
 					)
 				%>
-				</td>
-    </tr>
+                        </td>
+      </tr>
     <% end %>
   <% else %>
     <tr><td colspan="4">No products to show in this view.</td></tr>

@@ -6,7 +6,7 @@
           <h2><%= question.short_question %></h2>
         </a>
         <div class="padLeft">
-          <%= get_markdown(question.answer) %>
+          <%= raw question.answer %>
         </div>
         <br/>
       <% end %>

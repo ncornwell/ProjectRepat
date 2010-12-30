@@ -12,7 +12,9 @@ class Product < Item
     :dependent => :destroy
   has_many :variations, 
     :dependent => :destroy, :order => '-variation_rank DESC'
-  
+
+  has_many :comments, :dependent => :destroy
+    
   # Join with related items...
   has_and_belongs_to_many :related_products,
     :class_name => 'Product',

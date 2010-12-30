@@ -7,6 +7,7 @@
 class Item < ActiveRecord::Base
   has_many :order_line_items
   has_many :wishlist_items, :dependent => :destroy
+
   validates_presence_of :name, :code
   validates_uniqueness_of :code
   

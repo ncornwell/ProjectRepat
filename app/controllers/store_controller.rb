@@ -134,6 +134,10 @@ class StoreController < ApplicationController
       :order => '-variation_rank DESC',
       :conditions => "#{Variation.connection.quote_column_name("quantity")} > 0"
     )
+    @tags = @product.tags
+    @comments = @product.comments
+    
+    
   end
   
   # Shows shopping cart in pop-up window.
