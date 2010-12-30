@@ -48,8 +48,8 @@
 
 
             <% for @tag in @tags do %>
-              <div class="Comment">
-                <h3><%= @tag.parent.name if @tag %></h3>
+              <div>
+                <h3><%= @tag.parent.name if @tag.parent %></h3>
                 <%= @tag.name if @tag %>
               </div>
               <br />
@@ -80,21 +80,34 @@
 
                   <input type="hidden" name="quantity" value="1" />
                   <input type="submit" class="button" value="Add to Cart" />
+                  </form>
             <%
               # item in stock
               end
             %>
 
 
-
-            <% for @comment in @comments do %>
-              <div class="Comment">
-                <%= @comment if @comment %>
-              </div>
-            <% end %>
-                  
+            <div>
+              <br />
+              <h3>comments</h3>
+              <% for @comment in @comments do %>
+                <div class="Comment">
+                  <%= @comment.body if @comment %>                  
+                </div>
+                <br />
+              <% end %>
+              
+              <%= form_tag :action => "comment", :id => @product %>
+                <h3>add a new comment</h3>
+                 <%= text_area "comment", "body", :rows => 5 %>
+                 <br />
+                 <br />
+                 <%= submit_tag "Comment", :class => "button" %>
+              </form>
+            </div>
       </td>
     </tr>
   </table>
 
+            
 </div>

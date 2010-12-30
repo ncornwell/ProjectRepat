@@ -139,6 +139,12 @@ class StoreController < ApplicationController
     
     
   end
+
+  def comment
+   Product.find(params[:id]).comments.create(params[:comment])
+   flash[:notice] = "Added your comment"
+   redirect_to :controller =>'store', :action =>'show', :id => Product.find(params[:id]).code
+  end
   
   # Shows shopping cart in pop-up window.
   #

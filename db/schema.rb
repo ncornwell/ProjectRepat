@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20101230072203) do
 
   create_table "comments", :force => true do |t|
     t.integer  "product_id", :default => 0, :null => false
-    t.text     "comment"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
