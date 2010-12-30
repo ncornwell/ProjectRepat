@@ -49,8 +49,8 @@
 
             <% for @tag in @tags do %>
               <div class="Comment">
-                <h3><%= @tag.parent.name %></h3>
-                <%= @tag.name %>
+                <h3><%= @tag.parent.name if @tag %></h3>
+                <%= @tag.name if @tag %>
               </div>
               <br />
             <% end %>
@@ -89,7 +89,7 @@
 
             <% for @comment in @comments do %>
               <div class="Comment">
-                <%= @comment %>
+                <%= @comment if @comment %>
               </div>
             <% end %>
                   
