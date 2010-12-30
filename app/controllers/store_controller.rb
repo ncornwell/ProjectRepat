@@ -48,7 +48,7 @@ class StoreController < ApplicationController
     @tag_names = nil
     @viewing_tags = nil
     respond_to do |format|
-      format.html { @products = @products.order("name ASC").paginate(:page => params[:page],:per_page => 10) }
+      format.html { @products = @products.order("name ASC").paginate(:page => params[:page],:per_page => 12) }
       format.rss  { @products = @products.order("date_available DESC") ; render :action => 'index.rxml', :layout => false and return }
     end
   end
