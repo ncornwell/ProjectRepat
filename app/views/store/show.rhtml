@@ -39,6 +39,24 @@
         <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4d1cc5340409aa8e"></script>
         <!-- AddThis Button END -->
 
+            <div>
+              <br />
+              <h3>comments</h3>
+              <% for @comment in @comments do %>
+                <div class="Comment">
+                  <%= @comment.body if @comment %>
+                </div>
+                <br />
+              <% end %>
+
+              <%= form_tag :action => "comment", :id => @product %>
+                <h3>add a new comment</h3>
+                 <%= text_area "comment", "body", :rows => 5 %>
+                 <br />
+                 <br />
+                 <%= submit_tag "Comment", :class => "button" %>
+              </form>
+            </div>
         
       </td>
       <td style="width:300px;">
@@ -87,24 +105,6 @@
             %>
 
 
-            <div>
-              <br />
-              <h3>comments</h3>
-              <% for @comment in @comments do %>
-                <div class="Comment">
-                  <%= @comment.body if @comment %>                  
-                </div>
-                <br />
-              <% end %>
-              
-              <%= form_tag :action => "comment", :id => @product %>
-                <h3>add a new comment</h3>
-                 <%= text_area "comment", "body", :rows => 5 %>
-                 <br />
-                 <br />
-                 <%= submit_tag "Comment", :class => "button" %>
-              </form>
-            </div>
       </td>
     </tr>
   </table>
