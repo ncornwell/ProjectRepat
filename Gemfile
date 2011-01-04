@@ -15,7 +15,7 @@ gem 'rails', '3.0.0'
 
 ## Substruct Gems ##
 
-  # gem 'tlsmail'
+  gem 'tlsmail'
 
   # gem 'smtp_tls'
 
