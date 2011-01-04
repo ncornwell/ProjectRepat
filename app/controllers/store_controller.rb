@@ -251,7 +251,6 @@ class StoreController < ApplicationController
     # Set default price to pick what radio button should be entered
     @default_price = session[:order_shipping_types][0].id if session[:order_shipping_types][0]
     
-    render :layout => 'checkout' and return
   end
 
   # THIS IS DEPRECATED
@@ -297,7 +296,6 @@ class StoreController < ApplicationController
     if @order.order_shipping_type_id == nil
       redirect_to_shipping and return
     end
-    render :layout => 'checkout' and return
   end
 
   # Finishes the order
