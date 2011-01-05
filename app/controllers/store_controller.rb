@@ -17,13 +17,6 @@ class StoreController < ApplicationController
       :confirm_order, :finish_order
     ]
 
-# removed ssl require since we're using paypal
-#  before_filter :ssl_required,
-#    :only => [
-#      :checkout, :select_shipping_method, :view_shipping_method,
-#      :set_shipping_method, :confirm_order, :finish_order
-#    ]
-  
 
   if Preference.get_value_is_true?('store_test_transactions')
     ActiveMerchant::Billing::Base.integration_mode = :test 
