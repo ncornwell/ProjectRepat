@@ -15,8 +15,7 @@ gem 'rails', '3.0.0'
 
 ## Substruct Gems ##
 
-  # gem 'tlsmail'
-
+  gem 'tlsmail'
 
   gem 'activemerchant', :require=>'active_merchant', :git=>"http://github.com/Shopify/active_merchant.git"
   gem 'acts_as_tree'
