@@ -7,7 +7,7 @@ ERROR_NUMBER = 'Please enter only numbers (0-9) in this field.'
 
 ## Substruct Init (TODO: Make this into a config/initializer) ##
 begin
-  #Preference.init_mail_settings()
+  Preference.init_mail_settings()
 rescue
   puts "[SUBSTRUCT-MAILER WARNING 2010]"
   puts "Mail server settings have not been initialized."
