@@ -22,7 +22,7 @@ class Preference < ActiveRecord::Base
   # Make sure to wrap any block that calls this
   def self.init_mail_settings
     #if Preference.get_value_is_true?('use_smtp_tls_patch')
-      require "tlsmail"
+      # require "tlsmail"
       Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
     
       # Remove the Net::SMTP::Revision constant.
