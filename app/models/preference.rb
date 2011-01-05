@@ -21,7 +21,7 @@ class Preference < ActiveRecord::Base
   # Can throw an error if these items aren't set.
   # Make sure to wrap any block that calls this
   def self.init_mail_settings
-    #if Preference.get_value_is_true?('use_smtp_tls_patch')
+    if false # Preference.get_value_is_true?('use_smtp_tls_patch')
       require "tlsmail"
       Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
     
@@ -39,7 +39,7 @@ class Preference < ActiveRecord::Base
       end
       # Reload the net/smtp.rb class.
       require "net/smtp"
-    #end
+    end
     
     # SET MAIL SERVER SETTINGS FROM PREFERENCES
     mail_host = get_value('mail_host')
