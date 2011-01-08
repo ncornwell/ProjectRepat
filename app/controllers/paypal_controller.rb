@@ -4,6 +4,8 @@
 class PaypalController < ApplicationController
   include ActiveMerchant::Billing::Integrations
 
+  protect_from_forgery :except => :ipn
+  skip_before_filter :verify_authenticity_token
   # Handles Instant Payment Notification
   # from PayPal after a purchase.
   def ipn
