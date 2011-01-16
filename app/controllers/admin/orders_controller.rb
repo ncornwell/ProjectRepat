@@ -194,13 +194,13 @@ class Admin::OrdersController < Admin::BaseController
     logger.info @use_separate_shipping_address
     
     # Find all products not included as a order line item already.
-    @products = Item.find(
-      :all,
-      :conditions => [
-        "#{Item.connection.quote_column_name("id")} NOT IN(?)", 
-        @order.order_line_items.collect {|i| i.item_id}.join(',')
-      ]
-    )
+    #@products = Item.find(
+    #  :all,
+    #  :conditions => [
+    #    "#{Item.connection.quote_column_name("id")} NOT IN(?)",
+    #    @order.order_line_items.collect {|i| i.item_id}.join(',')
+    #  ]
+    #)
     # If this order is "finished" send them to the view page instead of the edit one...
 		# Orders on the show page can still do things like add notes.
     if (@order.is_editable?) then
