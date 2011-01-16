@@ -10,26 +10,25 @@ class PaypalController < ApplicationController
   # from PayPal after a purchase.
   def ipn
     notification = Paypal::Notification.new(request.raw_post)
-    order = Order.find_by_order_number(
-      notification.invoice,
-      :include => :shipping_address
-    )
 
-    if notification.acknowledge
-      begin
-        if notification.complete? && order.matches_ipn?(notification, params) 
-          order.pass_ipn(params[:txn_id])
-        else
-          order.fail_ipn()
+    begin
+      if notification.acknowledge
+        begin
+          order = Order.find_by_order_number(
+            notification.invoice,
+            :include => :shipping_address
+          )
+          if notification.complete? && order.matches_ipn?(notification, params)
+            order.pass_ipn(params[:txn_id])
+          else
+            order.fail_ipn()
+          end
+        ensure
+          order.save
         end
-      rescue => e
-        order.update_attribute(:order_status_code_id, 3)
-        raise
-      ensure
-        order.save
       end
+    ensure
+      render :nothing => true
     end
-    
-    render :nothing => true
   end
 end
