@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title><%=
+		if @title then
+			h @title
+		else
+			h controller.controller_name
+		end
+		-%> : <%=h @store_name %></title>
+
+        <meta name="description" content="Project Repat purchases amazing t-shirt castoffs from secondhand markets around the world, brings these spectacular t-shirts home with our team of volunteers, and then rebrands and resells the shirts in the United States in support of nonprofits active in the developing world. At Project Repat, we're harnessing the power of your old t-shirt to support developing world markets far away and local nonprofits around the corner. It's aid, hipster style!" />
+        <meta name="keywords" content="Project,Repat,Repatriation,T-shirt" />
+	<%= javascript_include_tag :defaults, :cache => 'default' %>
+  <%= 
+    javascript_include_tag(
+      'substruct', 'subModal', 'lightbox', 
+      :plugin => 'substruct', 
+      :cache => 'substruct_cache'
+    ) 
+  %>
+  <%= 
+    stylesheet_link_tag(
+      'main', 'subModal', 'lightbox',
+      :plugin => 'substruct', 
+      :cache => 'substruct_main'
+    ) 
+  %>
+	<%= yield :header %>
+</head>
+<body>
+
+<!-- Begin Container -->
+<div id="container">
+	<div id="header">
+                <!-- top links -->
+                <div class="TopLinks" >
+
+                  <img src="/images/Repat-Header.png" alt="Repat Header" USEMAP="#headerMap" />
+                  <map id="headerMap" name="headerMap">
+                    <area shape="rect" coords="0,0,275,104" href="/" alt="home" title="home"    />
+                    <area shape="rect" coords="0,102,176,135" href="/" alt="home" title="home"    />
+                    <area shape="rect" coords="180,101,284,135" href="/mission" alt="mission" title="mission"    />
+                    <area shape="rect" coords="292,101,427,135" href="/store" alt="buy a shirt" title="buy a shirt"    />
+                    <area shape="rect" coords="575,101,772,135" href="/agent" alt="become an agent" title="become an agent"    />
+                    <area shape="rect" coords="780,101,895,135" href="/questions/ask" alt="contact us" title="contact us"    />
+                    <area shape="rect" coords="434,101,562,135" href="/about" alt="repat team" title="repat team"    />
+                    <area shape="rect" coords="791,0,895,86" href="" alt="cart" onclick="SUBMODAL.show('/store/show_cart', 600, 400, null, true);return false;"/>                    
+                  </map>
+                </div>
+		
+		<% if @customer && !@customer.new_record? %>
+			<div id="customer_msg">
+				<%= @customer.email_address %>
+				<br/>
+				<a href="/customers/logout">log out</a>
+			</div>
+		<% end %>
+		
+	</div>
+	<!-- End header -->
+
+	<!-- Begin content body  -->
+	<div id="contentBody">
+		
+    <%= render :partial => '/shared/flash', :locals => { :flash => flash } %>
+		
+		<%= yield %>
+	</div>
+	<!-- End content body -->
+
+	<div id="footer">
+          <img src="/images/Repat-Footer.png" alt="Repat Footer" USEMAP="#footerMap" />
+          <map id="footerMap" name="footerMap">
+            <area shape="rect" coords="9,12,198,79" href="http://www.facebook.com/pages/project-repat/151226798258064" alt="facebook" title="facebook"    />
+            <area shape="rect" coords="24,84,208,150" href="http://twitter.com/projectrepat" alt="twitter" title="twitter"    />
+            <area shape="rect" coords="221,27,323,138" href="/questions/faq" alt="faq" title="faq"    />
+            <area shape="rect" coords="342,30,452,135" href="/blog" alt="blog" title="blog"    />
+            <area shape="rect" coords="466,35,592,132" href="/press" alt="press" title="press"    />
+            <area shape="rect" coords="839,103,891,135" href="" alt="submit" title="submit" onclick="$('#mc-embedded-subscribe').click();return false;"    />
+          </map>
+          <form  action="http://projectrepat.us2.list-manage.com/subscribe/post?u=8c9df15d1a62a7ba3ad5fa46e&amp;id=9fd69de0cc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                <input style="display:block; margin-top: -67px;margin-left: 705px; width:135px; height:27px; color:white;" type="text" value="name@email.com" name="EMAIL" id="mce-EMAIL" />
+                <input style="display:block; margin-top: -30px;margin-left: 840px; width:50px; height:27px;" type="submit" value="   " name="subscribe" id="mc-embedded-subscribe" />
+          </form>
+	</div>
+</div>
+
+<!-- End container -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20488990-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
