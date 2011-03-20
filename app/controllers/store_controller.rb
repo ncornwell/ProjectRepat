@@ -38,7 +38,7 @@ class StoreController < ApplicationController
     @title = "Store"
     @products = Product.available
     @tags = nil
-    @tag_sizes = Tag.find_all_by_parent_id(Tag.find_by_name("Sizes"))
+    @tag_sizes = Tag.find_all_by_parent_id(Tag.find_by_name("t-shirt size"))
     @tag_names = nil
     @viewing_tags = nil
     respond_to do |format|
