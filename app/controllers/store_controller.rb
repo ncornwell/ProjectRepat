@@ -37,7 +37,8 @@ class StoreController < ApplicationController
   def index
     @title = "Store"
     @products = Product.available
-    @tags = Tag.find_alpha
+    @tags = nil
+    @tag_sizes = Tag.find_all_by_parent_id(Tag.find_by_name("Sizes"))
     @tag_names = nil
     @viewing_tags = nil
     respond_to do |format|
@@ -72,28 +73,18 @@ class StoreController < ApplicationController
       temp_tag = Tag.find_by_name(name)
       if temp_tag then
         tag_ids_array << temp_tag.id
-      else
-        render(:file => "#{Rails.root}/public/404.html", :status => 404) and return
       end
     end
-    
-    if tag_ids_array.size == 0
-      render(:file => "#{Rails.root}/public/404.html", :status => 404) and return
-    end
-    
+
     @viewing_tags = Tag.find(tag_ids_array, :order => "parent_id ASC")
     viewing_tag_names = @viewing_tags.collect { |t| " > #{t.name}"}
     @title = "Store #{viewing_tag_names}"
     @tags = Tag.find_related_tags(tag_ids_array)
-    
+
     # Paginate products so we don't have a ton of ugly SQL
-    # and conditions in the controller    
-    list = Product.find_by_tags(tag_ids_array, true)
-    pager = Paginator.new(list, list.size, @@per_page, params[:page])
-    @products = WillPaginate::Collection.new(params[:page] || 1, @@per_page, list.size) do |p|
-      p.replace list[pager.current.offset, pager.items_per_page]
-    end
-    
+    # and conditions in the controller
+
+    @products = Product.find_by_tags(tag_ids_array, true).paginate(:page => params[:page],:per_page => 12)
     render :action => 'index.rhtml'
   end
 
