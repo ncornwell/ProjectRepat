@@ -21,11 +21,33 @@
 			<% end
                end	%>
 		</h1>
-	
+
+
+
 	<%= will_paginate @products %>
+
+  <table>
+    <tr>
+      <td>
+
+      <div>
+        <% for tag in Tag.find_ordered_parents do %>
+            <%= tag.name %>:
+            <% for tag_child in Tag.find_all_by_parent_id tag.id      %>
+                <br /><%= link_to tag_child.name, :controller => 'store', :action => 'show_by_tags', :tags => tag_child.name %>
+            <% end %>
+            <br />
+        <% end %>
+      </div>
+      </td>
+      <td style="text-align:center;">
 
 	<!-- PRODUCTS LIST -->
 	<%= render :partial => 'product', :collection => @products %>
+      </td>
+    </tr>
+  </table>
+
 
 
   <% if @products.length == 0 then %>
@@ -37,15 +59,6 @@
 	<%= will_paginate @products %>
 
 
-            <% if @tag_sizes then %>
-              <br />
-              <div class="pagination">
-                Shop by size:
-                <% for tag in @tag_sizes do %>
-                    <%= link_to tag.name, :controller => 'store', :action => 'show_by_tags', :tags => tag.name %>
-            <%     end
-               end %>
-              </div>
 
   <br/>
 	<!-- takes up space so we can see the bottom content on this page -->
