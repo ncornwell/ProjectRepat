@@ -30,11 +30,11 @@
     <tr>
       <td>
 
-      <div>
+      <div style="text-align:left;">
         <% for tag in Tag.find_ordered_parents do %>
-            <%= tag.name %>:
+            <h3><%= tag.name %>:</h3>
             <% for tag_child in Tag.find_all_by_parent_id tag.id      %>
-                <br /><%= link_to tag_child.name, :controller => 'store', :action => 'show_by_tags', :tags => tag_child.name %>
+                <%= link_to tag_child.name, :controller => 'store', :action => 'show_by_tags', :tags => tag_child.name %><br />
             <% end %>
             <br />
         <% end %>

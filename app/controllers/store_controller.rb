@@ -77,8 +77,7 @@ class StoreController < ApplicationController
     end
 
     @viewing_tags = Tag.find(tag_ids_array, :order => "parent_id ASC")
-    viewing_tag_names = @viewing_tags.collect { |t| " > #{t.name}"}
-    @title = "Store #{viewing_tag_names}"
+    @title = "Store"
     @tags = Tag.find_related_tags(tag_ids_array)
 
     # Paginate products so we don't have a ton of ugly SQL
