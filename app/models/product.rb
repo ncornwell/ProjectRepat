@@ -75,7 +75,7 @@ class Product < Item
 	# Finds products that match ALL tag ids passed in
 	def self.find_by_tags(tag_ids, find_available=false, order_by="date_available DESC")
     all_tagged = Tag.find(tag_ids).map(&:product_ids).flatten
-    Product.find(all_tagged.uniq.collect{|t| t if all_tagged.count(t)==tag_ids.length}.reject(&:blank?))    
+    Product.find(all_tagged.uniq.collect{|t| t if all_tagged.count(t)==tag_ids.length}.reject(&:blank?))
 	end
 	
 	#############################################################################

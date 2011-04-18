@@ -26,6 +26,7 @@ gem 'rails', '3.0.0'
   gem 'RedCloth'
   gem 'will_paginate', :git=>"http://github.com/mislav/will_paginate.git", :branch=>"rails3"
   gem 'aws-s3'
+  gem 'bundler'
   
   group(:test) do
     gem 'rcov'

@@ -114,6 +114,7 @@ DEPENDENCIES
   activemerchant!
   acts_as_tree
   aws-s3
+  bundler
   ezcrypto
   mocha
   paperclip!
