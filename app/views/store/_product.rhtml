@@ -1,16 +1,28 @@
 <div class="product">
-    <div class="product_image"> 
+
+
+    <div class="product_image" style="position: relative">
       <%
         if product.images.empty? 
-          image = image_tag('public-ui/no-product-image.gif',:plugin=>'substruct', :alt=>product.name )
+          image = image_tag('public-ui/no-product-image.gif',:plugin=>'substruct', :alt=>product.name, :style => 'z-index: 32; left: 8px; position: relative;')
         else
           image = image_tag(product.images[0].upload.url(:small), :alt => product.name) 
         end
       %>
       <%= link_to(image, :controller=>'store', :action=>'show', :id => product.code) %>
+      <% if (product.quantity <= 0) %>
+        <div style="z-index: 100; left: 72px; position: absolute; top: 100px">
+          <%= image_tag('sold_stamp.png', :width => 100, :height => 100)  %>
+        </div>
+      <% end %>
     </div>
     <div class="product_title">
       <%= link_to(product.name, :controller=>'store', :action=>'show', :id => product.code) %>
     </div>
+
+  <div class="container" style="position: relative">
+
+  </div>
+
 </div>
 
