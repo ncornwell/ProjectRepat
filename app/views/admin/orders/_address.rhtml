@@ -18,7 +18,7 @@
 		<%= error_message_on("#{address_type}_address", :address) %>
 	</div>
 	<div class="floatHalf">
-		<%= make_label('City') %>
+		<%= make_label('City', true) %>
 		<%= text_field "#{address_type}_address", 'city', :maxlength => 50, :size => 30, :class => 'textInput' %>
 		<%= error_message_on("#{address_type}_address", :city) %>
   </div>
@@ -26,7 +26,7 @@
 
 	<div class="floatHalf">
 		<div class="float">
-			<%= make_label('State/Prov') %>
+			<%= make_label('State/Prov', true) %>
   		<%= text_field "#{address_type}_address", 'state', :maxlength => 30, :size => 10, :class => 'textInput' %>
   		<%= error_message_on("#{address_type}_address", :state) %>
   	</div>
