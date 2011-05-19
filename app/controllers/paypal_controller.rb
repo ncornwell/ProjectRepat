@@ -15,7 +15,7 @@ class PaypalController < ApplicationController
       if notification.acknowledge
         begin
           order = Order.find_by_order_number(notification.invoice)
-          if notification.complete? && order.matches_ipn?(notification, params)
+          if order.matches_ipn?(notification, params)
             order.pass_ipn(params[:txn_id])
           end
         ensure
