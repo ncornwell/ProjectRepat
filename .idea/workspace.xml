@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2683803e-07a0-4739-842d-2c8a871a47ea" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/paypal_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/paypal_controller.rb" />
     </list>
     <ignored path="ProjectRepat.iws" />
     <ignored path=".idea/workspace.xml" />
